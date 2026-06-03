@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>족저근막염 치료 | 동빈한의원</title>
+<meta name="description" content="동빈한의원 족저근막염 치료. 아침 첫 발 통증, 오래 서 있을 때 심해지는 발뒤꿈치 통증을 확인합니다.">
+<link rel="canonical" href="https://dori-dol.github.io/dongbin-homepage/foot.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="족저근막염 치료 | 동빈한의원">
+<meta property="og:description" content="동빈한의원 족저근막염 치료. 아침 첫 발 통증, 오래 서 있을 때 심해지는 발뒤꿈치 통증을 확인합니다.">
+<meta property="og:url" content="https://dori-dol.github.io/dongbin-homepage/foot.html">
+<meta property="og:image" content="https://dori-dol.github.io/dongbin-homepage/images/dongbinlogo연산토곡.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="족저근막염 치료 | 동빈한의원">
+<meta name="twitter:description" content="동빈한의원 족저근막염 치료. 아침 첫 발 통증, 오래 서 있을 때 심해지는 발뒤꿈치 통증을 확인합니다.">
+<meta name="twitter:image" content="https://dori-dol.github.io/dongbin-homepage/images/dongbinlogo연산토곡.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "동빈한의원",
+  "telephone": "051-752-0058",
+  "medicalSpecialty": ["척추질환", "관절질환", "통증클리닉"]
+}
+</script>
+</head>
+
+<body>
+<header class="site-header">
+<a class="brand" href="index.html" aria-label="동빈한의원 홈"><img src="images/dongbinlogo연산토곡.png" alt="동빈한의원"></a>
+<nav class="nav-links" aria-label="주요 메뉴">
+<a href="index.html">홈</a>
+<a href="index.html#treatment">진료과목</a>
+<a href="index.html#clinic">한의원 소개</a>
+<a href="index.html#contact">오시는 길</a>
+</nav>
+<a href="tel:051-752-0058" class="header-call">051-752-0058</a>
+</header>
+
+<main>
+<section class="detail-hero plantar">
+<p class="eyebrow">Foot Care</p>
+<h1>족저근막염 치료</h1>
+<p>족저근막염 치료 | 동빈한의원</p>
+</section>
+
+<section class="detail-layout">
+<article class="detail-main">
+<div class="card">
+<h2>이런 증상이 있으신가요?</h2>
+<ul class="check-list">
+<li>아침 첫 발 디딜 때 통증</li>
+<li>오래 서 있으면 심해짐</li>
+<li>발뒤꿈치 압통</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>원인</h2>
+<p>
+발바닥 근막에 반복적인 부담이 쌓이며 염증이 발생합니다.
+</p>
+</div>
+
+<div class="card">
+<h2>치료 방향</h2>
+<p>
+근막 긴장 완화와 보행 패턴 교정을 함께 진행합니다.
+</p>
+</div>
+</article>
+
+<aside class="side-panel">
+<span>상담 문의</span>
+<strong>051-752-0058</strong>
+<p>전화 상담 후 방문하시면 더 편리합니다.</p>
+<a href="tel:051-752-0058" class="btn primary">전화 상담</a>
+</aside>
+</section>
+</main>
+
+<footer class="site-footer">
+<strong>동빈한의원</strong>
+<span>전화 051-752-0058</span>
+<span>팩스 051-752-0059</span>
+</footer>
+</body>
+</html>
