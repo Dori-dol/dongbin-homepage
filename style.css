@@ -896,35 +896,62 @@ figcaption {
     }
 }
 
-/* [2단계] 작은 태블릿 및 모바일 통합 (햄버거 메뉴 활성화) */
+/* PC 전용: 평소에는 햄버거 버튼 숨김 및 데스크톱 전용 표기 */
+.menu-toggle {
+    display: none;
+}
+.desktop-only {
+    display: inline-flex;
+}
+
+/* [1단계] 태블릿 / 작은 모니터 */
+@media (max-width: 1120px) {
+    .treatment-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* [2단계] 작은 태블릿 및 모바일 통합 (2줄 레이아웃 정렬) */
 @media (max-width: 900px) {
     .site-header {
+        display: flex;
+        flex-wrap: wrap; /* 요소를 밑으로 내릴 수 있도록 허용 */
+        align-items: center;
         justify-content: space-between;
-        min-height: 70px;
         padding: 12px 20px;
+        min-height: auto;
     }
 
+    /* 1. 로고를 무조건 첫 줄에 100% 가득 차게 배치 */
     .brand {
-        width: 200px;
-        min-width: 200px;
+        flex: 0 0 100%;
+        width: 100%;
         height: 46px;
-        margin-top: -3px;
+        display: flex;
+        justify-content: center; /* 로고 중앙 정렬 (원치 않으시면 제거 가능) */
+        margin-bottom: 12px; /* 아래 블로그/햄버거 줄과의 간격 */
     }
     .brand img {
+        position: relative;
         top: -4px;
+        left: 0;
     }
 
-    /* 오른쪽 전화/블로그 레이아웃 조정 */
+    /* 2. 전화번호 완전 삭제(숨김) */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* 3. 블로그 영역을 좌측 하단으로 배치 */
     .header-right {
-        margin-left: auto;
-        margin-right: 15px;
-        gap: 10px;
+        margin: 0;
+        order: 2; /* 순서를 밑으로 조정 */
     }
-    .call-label, .blog-label, .blog-divider {
-        display: none;
+    .blog-label, .blog-divider {
+        display: none; /* 글자는 숨기고 아이콘만 깔끔하게 */
     }
 
-    /* 햄버거 버튼 스타일 구현 */
+    /* 4. 햄버거 버튼을 우측 하단으로 배치 */
     .menu-toggle {
         display: flex;
         flex-direction: column;
@@ -936,6 +963,7 @@ figcaption {
         cursor: pointer;
         padding: 0;
         z-index: 101;
+        order: 3; /* 블로그와 나란히 아래 줄에 위치 */
     }
     .menu-toggle span {
         display: block;
@@ -951,7 +979,7 @@ figcaption {
 
     /* 목록형으로 떨어지는 모바일 메뉴 레이아웃 */
     .nav-links {
-        display: none; /* 평소엔 숨김 */
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
@@ -964,7 +992,6 @@ figcaption {
         box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         z-index: 100;
     }
-    /* open 클래스가 붙으면 아래로 목록 전개 */
     .nav-links.open {
         display: flex;
     }
@@ -984,7 +1011,6 @@ figcaption {
         background: var(--soft);
     }
 
-    /* 모바일 진료과목 하위 메뉴 아코디언 스타일 */
     .nav-dropdown-menu {
         position: static;
         opacity: 1;
@@ -995,10 +1021,10 @@ figcaption {
         background: var(--soft);
         padding: 4px 0;
         margin: 0;
-        display: block; /* 모바일 리스트 내부에 항상 펼쳐둠 */
+        display: block;
     }
     .nav-dropdown-menu li a {
-        padding: 12px 40px; /* 안쪽으로 들여쓰기 */
+        padding: 12px 40px;
         font-size: 14.5px;
         font-weight: 600;
     }
@@ -1012,32 +1038,24 @@ figcaption {
     .related-card { align-items: flex-start; flex-direction: column; }
 }
 
-/* [3단계] 일반 스마트폰 (모바일 세로 최적화) */
+/* [3단계] 일반 스마트폰 (모바일 세로 최종 스케일 조정) */
 @media (max-width: 680px) {
     main {
         width: min(100% - 24px, 1180px);
         padding-top: 18px;
     }
     .brand {
-        width: 160px;
-        min-width: 160px;
         height: 40px;
+        margin-bottom: 8px;
     }
     .brand img {
         width: 190px !important;
-        left: -2px;
-        top: -4px;
-    }
-    .header-phone-highlight {
-        min-height: 36px;
-        padding: 0 10px;
-        font-size: 12.5px;
     }
     .blog-icon-sprite {
-        width: 32px;
-        height: 32px;
-        background-size: 380px 368px;
-        background-position: 0px -176px;
+        width: 34px;
+        height: 34px;
+        background-size: 400px 388px;
+        background-position: 0px -186px;
     }
     .hero, .detail-hero, .keyword-band, .insurance-band, .proof-grid article, .feature-card div, .service-card, .card, .contact-card {
         padding: 24px;
