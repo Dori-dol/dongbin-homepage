@@ -977,34 +977,39 @@ figcaption {
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* 목록형으로 떨어지는 모바일 메뉴 레이아웃 */
+    /* [수정] 목록형으로 떨어지는 모바일 메뉴 레이아웃 -> 전체 화면 전환 방식으로 변경 */
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
+        display: none; /* 평소엔 숨김 */
+        position: fixed; /* absolute에서 fixed로 변경하여 화면에 박제 */
+        top: 70px; /* 헤더 바로 아래부터 시작 (헤더 높이에 맞춰 조절 가능) */
         left: 0;
         width: 100%;
-        background: #ffffff;
+        height: calc(100vh - 70px); /* 화면 남은 세로 높이를 100% 꽉 채움 */
+        background: #ffffff; /* 완전히 불투명한 흰색 배경으로 뒤를 투명하게 비치지 않게 함 */
         flex-direction: column;
         gap: 0;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--line);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        padding: 20px 0;
+        box-sizing: border-box;
         z-index: 100;
+        overflow-y: auto; /* 메뉴 내용이 많아지면 메뉴창 안에서만 스크롤 되도록 설정 */
     }
+
+    /* open 클래스가 붙으면 전면 활성화 */
     .nav-links.open {
         display: flex;
     }
 
+    /* 메뉴 링크 크기를 살짝 키워 시원시원한 풀스크린 느낌 강조 */
     .nav-links a, 
     .nav-dropdown-trigger {
         width: 100%;
-        padding: 14px 24px;
-        font-size: 16px;
-        font-weight: 700;
+        padding: 16px 28px;
+        font-size: 17px; /* 글자 크기 살짝 확대 */
+        font-weight: 800;
         border-radius: 0;
         text-align: left;
         box-sizing: border-box;
+        border-bottom: 1px solid var(--soft); /* 메뉴 항목 간 구분선 추가 */
     }
     .nav-links a:hover,
     .nav-links a.is-active {
