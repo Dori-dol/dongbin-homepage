@@ -1038,11 +1038,11 @@ figcaption {
     .related-card { align-items: flex-start; flex-direction: column; }
 }
 
-/* [3단계] 일반 스마트폰 (모바일 세로 최종 스케일 조정) */
+/* [3단계] 일반 스마트폰 (모바일 세로 최종 스케일 및 여백 최적화) */
 @media (max-width: 680px) {
     main {
         width: min(100% - 24px, 1180px);
-        padding-top: 18px;
+        padding-top: 10px; /* 본문이 헤더와 너무 떨어지지 않도록 상단 여백 축소 */
     }
     .brand {
         height: 40px;
@@ -1057,10 +1057,46 @@ figcaption {
         background-size: 400px 388px;
         background-position: 0px -186px;
     }
-    .hero, .detail-hero, .keyword-band, .insurance-band, .proof-grid article, .feature-card div, .service-card, .card, .contact-card {
+
+    /* 🚨 첫 화면에서 카드가 가려지거나 밀리지 않도록 모바일 히어로 영역 조정 */
+    .hero {
+        padding: 20px 16px; /* 사방 여백을 줄여 컨텐츠를 위로 바짝 올림 */
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .hero-copy {
+        width: 100%;
+        text-align: center; /* 모바일에서는 직관적으로 중앙 정렬 */
+    }
+
+    .hero h1, .detail-hero h1 { 
+        font-size: 26px; /* 글자 크기를 살짝 줄여 타이틀이 차지하는 세로 폭 축소 */
+        line-height: 1.25;
+    }
+    
+    .hero p {
+        margin: 12px 0 0; /* 본문 설명 문구 위쪽 여백 축소 */
+        font-size: 14.5px;
+    }
+
+    .hero-actions {
+        margin-top: 20px; /* 버튼 상단 여백 축소 */
+        justify-content: center;
+    }
+
+    /* 우측/하단 안내 패널 여백도 컴팩트하게 조정 */
+    .hero-panel {
+        margin-top: 16px;
+        padding: 20px 16px;
+    }
+
+    /* 기타 섹션 패딩 유지 */
+    .detail-hero, .keyword-band, .insurance-band, .proof-grid article, .feature-card div, .service-card, .card, .contact-card {
         padding: 24px;
     }
-    .hero h1, .detail-hero h1 { font-size: 28px; }
     .treatment-grid { grid-template-columns: 1fr; }
 }
 
