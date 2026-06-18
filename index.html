@@ -35,9 +35,16 @@
 <a class="brand" href="#home" aria-label="동빈한의원 홈">
   <img src="images/dongbin_LOGO.svg" alt="동빈한의원">
 </a>
-<nav class="nav-links" aria-label="주요 메뉴">
-<a href="#home">홈</a>
-<a href="#clinic">한의원 소개</a>
+
+<button class="menu-toggle" aria-label="메뉴 열기" onclick="toggleMobileMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<nav class="nav-links" id="navLinks" aria-label="주요 메뉴">
+<a href="#home" onclick="closeMobileMenu()">홈</a>
+<a href="#clinic" onclick="closeMobileMenu()">한의원 소개</a>
 <div class="nav-dropdown">
   <a href="#treatment" class="nav-dropdown-trigger">진료과목</a>
   <ul class="nav-dropdown-menu">
@@ -48,7 +55,7 @@
     <li><a href="foot.html">족저근막염</a></li>
   </ul>
 </div>
-<a href="#contact">오시는 길</a>
+<a href="#contact" onclick="closeMobileMenu()">오시는 길</a>
 </nav>
 
 <div class="header-right">
@@ -269,7 +276,23 @@
 <div id="toast" class="toast-notification">주소가 클립보드에 복사되었습니다.</div>
 
 <script>
-  
+
+// [추가] 모바일 메뉴 토글 함수
+function toggleMobileMenu() {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+  navLinks.classList.toggle("open");
+  toggleBtn.classList.toggle("active");
+}
+
+// [추가] 메뉴 클릭 시 닫히는 함수
+function closeMobileMenu() {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+  navLinks.classList.remove("open");
+  toggleBtn.classList.remove("active");
+}
+
 function showSection(id) {
   const target = document.getElementById(id) ? id : "home";
   document.querySelectorAll(".content").forEach(sec => {

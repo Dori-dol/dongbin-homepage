@@ -884,76 +884,107 @@ figcaption {
     }
 }
 
-/* [2단계] 작은 태블릿 / 모바일 가로 */
+/* PC 전용: 평소에는 햄버거 버튼 숨김 */
+.menu-toggle {
+    display: none;
+}
+
+/* [1단계] 태블릿 / 작은 모니터 */
+@media (max-width: 1120px) {
+    .treatment-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* [2단계] 작은 태블릿 및 모바일 통합 (햄버거 메뉴 활성화) */
 @media (max-width: 900px) {
     .site-header {
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 12px;
+        justify-content: space-between;
+        min-height: 70px;
+        padding: 12px 20px;
     }
 
-    /* 확장된 로고 배율에 맞춰 태블릿 구간 크기 보정 */
     .brand {
-        width: 220px;
-        min-width: 220px;
-        height: 50px;
+        width: 200px;
+        min-width: 200px;
+        height: 46px;
         margin-top: -3px;
     }
-    
     .brand img {
-        top: -5px; /* 이미지 내부 쏠림 방지 */
+        top: -4px;
     }
 
-    .nav-links {
-        order: 3;
-        justify-content: flex-start;
-        width: 100%;
-        overflow-x: auto;
-    }
-
+    /* 오른쪽 전화/블로그 레이아웃 조정 */
     .header-right {
         margin-left: auto;
-        gap: 12px;
+        margin-right: 15px;
+        gap: 10px;
     }
-
-    .call-label,
-    .blog-label,
-    .blog-divider {
+    .call-label, .blog-label, .blog-divider {
         display: none;
     }
 
-    .hero,
-    .keyword-band,
-    .insurance-band,
-    .contact-layout,
-    .detail-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        min-height: auto;
-    }
-
-    .hero-panel,
-    .side-panel {
-        align-self: stretch;
-    }
-
-    .side-panel {
-        position: static;
-    }
-
-    .proof-grid,
-    .feature-grid,
-    .image-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .related-card {
-        align-items: flex-start;
+    /* 햄버거 버튼 스타일 구현 */
+    .menu-toggle {
+        display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 101;
+    }
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--navy);
+        transition: all 0.3s ease;
+    }
+    /* 버튼 클릭 시 X로 변하는 애니메이션 */
+    .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* 목록형으로 떨어지는 모바일 메뉴 레이아웃 */
+    .nav-links {
+        display: none; /* 평소엔 숨김 */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        z-index: 100;
+    }
+    /* open 클래스가 붙으면 아래로 목록 전개 */
+    .nav-links.open {
+        display: flex;
     }
 
+    .nav-links a, 
+    .nav-dropdown-trigger {
+        width: 100%;
+        padding: 14px 24px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 0;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    .nav-links a:hover,
+    .nav-links a.is-active {
+        background: var(--soft);
+    }
+
+    /* 모바일 진료과목 하위 메뉴 아코디언 스타일 */
     .nav-dropdown-menu {
         position: static;
         opacity: 1;
@@ -961,63 +992,56 @@ figcaption {
         transform: none;
         box-shadow: none;
         border: none;
-        border-left: 3px solid var(--line);
-        border-radius: 0;
-        padding: 0 0 0 12px;
-        margin: 4px 0 4px 14px;
-        display: none;
+        background: var(--soft);
+        padding: 4px 0;
+        margin: 0;
+        display: block; /* 모바일 리스트 내부에 항상 펼쳐둠 */
+    }
+    .nav-dropdown-menu li a {
+        padding: 12px 40px; /* 안쪽으로 들여쓰기 */
+        font-size: 14.5px;
+        font-weight: 600;
     }
 
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown.open .nav-dropdown-menu {
-        display: block;
+    /* 기타 본문 1열 정렬 */
+    .hero, .keyword-band, .insurance-band, .contact-layout, .detail-layout, .proof-grid, .feature-grid, .image-grid {
+        grid-template-columns: 1fr;
     }
+    .hero { min-height: auto; }
+    .hero-panel, .side-panel { align-self: stretch; position: static; }
+    .related-card { align-items: flex-start; flex-direction: column; }
 }
 
-/* [3단계] 일반 스마트폰 (모바일 세로) */
+/* [3단계] 일반 스마트폰 (모바일 세로 최적화) */
 @media (max-width: 680px) {
     main {
         width: min(100% - 24px, 1180px);
         padding-top: 18px;
     }
-
-    /* 가장 작은 화면에서 로고가 찌그러지지 않도록 최종 마스킹 비율 고정 */
     .brand {
-        width: 185px;
-        min-width: 185px;
-        height: 44px;
-        margin-top: -2px;
+        width: 160px;
+        min-width: 160px;
+        height: 40px;
     }
-    
     .brand img {
-        width: 215px !important;
-        left: -3px;
+        width: 190px !important;
+        left: -2px;
         top: -4px;
     }
-
-    .hero,
-    .detail-hero,
-    .keyword-band,
-    .insurance-band,
-    .proof-grid article,
-    .feature-card div,
-    .service-card,
-    .card,
-    .contact-card {
+    .header-phone-highlight {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 12.5px;
+    }
+    .blog-icon-sprite {
+        width: 32px;
+        height: 32px;
+        background-size: 380px 368px;
+        background-position: 0px -176px;
+    }
+    .hero, .detail-hero, .keyword-band, .insurance-band, .proof-grid article, .feature-card div, .service-card, .card, .contact-card {
         padding: 24px;
     }
-    
-    .hero h1,
-    .detail-hero h1 {
-        font-size: 30px;
-    }
-
-    .hero p,
-    .detail-hero p:last-child {
-        font-size: 15px;
-    }
-
-    .treatment-grid {
-        grid-template-columns: 1fr;
-    }
+    .hero h1, .detail-hero h1 { font-size: 28px; }
+    .treatment-grid { grid-template-columns: 1fr; }
 }
