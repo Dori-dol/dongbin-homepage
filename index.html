@@ -277,22 +277,33 @@
 
 <script>
 
-// [추가] 모바일 메뉴 토글 함수
+// 모바일 메뉴 토글 함수 (스크롤 잠금 추가)
 function toggleMobileMenu() {
   const navLinks = document.getElementById("navLinks");
   const toggleBtn = document.querySelector(".menu-toggle");
+  
   navLinks.classList.toggle("open");
   toggleBtn.classList.toggle("active");
+  
+  // 메뉴가 열려있으면 body에 스크롤 잠금 클래스 추가, 닫히면 제거
+  if (navLinks.classList.contains("open")) {
+    document.body.classList.add("no-scroll");
+  } else {
+    document.body.classList.remove("no-scroll");
+  }
 }
 
-// [추가] 메뉴 클릭 시 닫히는 함수
+// 메뉴 클릭 시 닫히는 함수 (스크롤 잠금 해제 추가)
 function closeMobileMenu() {
   const navLinks = document.getElementById("navLinks");
   const toggleBtn = document.querySelector(".menu-toggle");
+  
   navLinks.classList.remove("open");
   toggleBtn.classList.remove("active");
+  
+  // 메뉴가 닫히므로 스크롤 잠금 무조건 해제
+  document.body.classList.remove("no-scroll");
 }
-
 function showSection(id) {
   const target = document.getElementById(id) ? id : "home";
   document.querySelectorAll(".content").forEach(sec => {

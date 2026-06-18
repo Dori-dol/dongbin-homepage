@@ -1063,3 +1063,8 @@ figcaption {
     .hero h1, .detail-hero h1 { font-size: 28px; }
     .treatment-grid { grid-template-columns: 1fr; }
 }
+
+/* 모바일 메뉴 오픈 시 뒷배경 스크롤 방지 클래스 */
+body.no-scroll {
+    overflow: hidden !important;
+}
