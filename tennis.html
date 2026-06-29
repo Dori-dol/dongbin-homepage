@@ -10,10 +10,11 @@
 <meta property="og:title" content="테니스엘보 치료 | 동빈한의원">
 <meta property="og:description" content="동빈한의원 테니스엘보 치료. MO약침, 전침, 관절 가동 치료를 통해 저혈관 조직인 팔꿈치 힘줄 재생을 촉진하고 만성 통증을 치료합니다.">
 <meta property="og:url" content="https://dori-dol.github.io/dongbin-homepage/tennis.html">
-<meta property="og:image" content="https://dori-dol.github.io/dongbin-homepage/images/dongbinlogo연산토곡.png">
+<meta property="og:image" content="https://dori-dol.github.io/dongbin-homepage/images/dongbin_LOGO.svg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="테니스엘보 치료 | 동빈한의원">
 <meta name="twitter:description" content="동빈한의원 테니스엘보 치료. MO약침, 전침, 관절 가동 치료를 통해 저혈관 조직인 팔꿈치 힘줄 재생을 촉진하고 만성 통증을 치료합니다.">
+<meta name="twitter:image" content="https://dori-dol.github.io/dongbin-homepage/images/dongbin_LOGO.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,32 +24,37 @@
 <body>
 <header class="site-header">
   <a class="brand" href="index.html" aria-label="동빈한의원 홈">
-    <img src="images/dongbinlogo연산토곡.png" alt="동빈한의원">
+    <img src="images/dongbin_LOGO.svg" alt="동빈한의원">
   </a>
-  <nav class="nav-links" aria-label="주요 메뉴">
-  <a href="index.html#home">홈</a>
-  <a href="index.html#clinic">한의원 소개</a>
-  <div class="nav-dropdown">
-    <a href="index.html#treatment" class="nav-dropdown-trigger is-active">진료과목</a>
-    <ul class="nav-dropdown-menu">
-      <li><a href="disc.html">요추 디스크</a></li>
-      <li><a href="cervical.html">경추 디스크</a></li>
-      <li><a href="tennis.html">테니스엘보 (팔꿈치 통증)</a></li>
-      <li><a href="shoulder.html">어깨관절 질환 (오십견)</a></li>
-      <li><a href="foot.html">족저근막염</a></li>
-    </ul>
-  </div>
-  <a href="index.html#contact">오시는 길</a>
+  <nav class="nav-links" id="navLinks" aria-label="주요 메뉴">
+    <a href="index.html#home" onclick="closeMobileMenu()">홈</a>
+    <a href="index.html#clinic" onclick="closeMobileMenu()">한의원 소개</a>
+    <div class="nav-dropdown">
+      <a href="index.html#treatment" class="nav-dropdown-trigger is-active">진료과목</a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="disc.html">요추 디스크</a></li>
+        <li><a href="cervical.html">경추 디스크</a></li>
+        <li><a href="tennis.html">테니스엘보 (팔꿈치 통증)</a></li>
+        <li><a href="shoulder.html">어깨관절 질환 (오십견)</a></li>
+        <li><a href="foot.html">족저근막염</a></li>
+      </ul>
+    </div>
+    <a href="index.html#contact" onclick="closeMobileMenu()">오시는 길</a>
   </nav>
   
   <div class="header-right">
-  <a href="tel:051-752-0058" class="header-phone-highlight">전화번호: 051-752-0058</a>
-  
-  <a href="https://blog.naver.com/trace_wind" target="_blank" rel="noopener noreferrer" class="blog-link-wrapper">
-    <span class="blog-label">블로그:</span>
-    <span class="blog-icon-sprite"></span>
-  </a>
+    <a href="tel:051-752-0058" class="header-phone-highlight desktop-only">전화번호: 051-752-0058</a>
+    <a href="https://blog.naver.com/trace_wind" target="_blank" rel="noopener noreferrer" class="blog-link-wrapper">
+      <span class="blog-label">블로그:</span>
+      <span class="blog-icon-sprite"></span>
+    </a>
   </div>
+
+  <button class="menu-toggle" aria-label="메뉴 열기" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
 
 <main>
@@ -73,7 +79,7 @@
 <div class="card">
 <h2>테니스엘보 원인</h2>
 <p>
-테니스엘보(외측상과염)는 손목을 위로 젖히는 근육과 팔꿈치 뼈를 이어주는 건(힘줄)에 미세한 파열과 염증이 누적되면서 발생하는 질환입니다. 꼭 테니스를 치지 않더라도 컴퓨터 사용이 많은 직장인, 가사 노동이 잦은 주부, 요리사 등 손목과 팔을 반복적으로 사용하는 누구에게나 흔히 나타납니다.
+테니스엘보(외측상과염)는 손목을 위로 젖히는 근육과 팔꿈치 뼈를 이어주는 건(힘줄)에 미세한 파열과 염증이 누적되는 질환입니다. 꼭 테니스를 치지 않더라도 컴퓨터 사용이 많은 직장인, 가사 노동이 잦은 주부, 요리사 등 손목과 팔을 반복적으로 사용하는 누구에게나 흔히 나타납니다.
 </p>
 <p>
 특히 팔꿈치 힘줄 부위는 혈액 공급이 상대적으로 원활하지 못한 **'저혈관 조직(Hypovascular Zone)'**에 속하기 때문에, 한 번 손상되면 자연 치유가 더디고 만성 통증으로 진행되기 매우 쉽습니다.
@@ -121,5 +127,27 @@
 <span>전화 051-752-0058</span>
 <span>팩스 051-752-0059</span>
 </footer>
+
+<script>
+function toggleMobileMenu() {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+  navLinks.classList.toggle("open");
+  toggleBtn.classList.toggle("active");
+  if (navLinks.classList.contains("open")) {
+    document.body.classList.add("no-scroll");
+  } else {
+    document.body.classList.remove("no-scroll");
+  }
+}
+
+function closeMobileMenu() {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+  navLinks.classList.remove("open");
+  toggleBtn.classList.remove("active");
+  document.body.classList.remove("no-scroll");
+}
+</script>
 </body>
 </html>
