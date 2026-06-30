@@ -1072,3 +1072,8 @@ body.no-scroll {
         scroll-margin-top: 80px;
     }
 }
+
+/* 제목(h2) 바로 다음에 나오는 문단(p)의 상단 간격을 리스트 항목처럼 넓혀주는 코드 */
+.card h2 + p {
+    margin-top: 20px;
+}
