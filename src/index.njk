@@ -1,0 +1,232 @@
+---
+layout: layouts/base.njk
+onIndex: true
+includeSchema: true
+pagePath: "index.html"
+pageTitle: "동빈한의원 | 허리디스크 · 목디스크 · 관절 통증 진료"
+metaDescription: "동빈한의원은 허리디스크, 목디스크, 팔꿈치 통증, 오십견, 족저근막염 등 척추질환, 관절질환, 통증클리닉을 진료합니다."
+ogImage: "images/dongbinlogo연산토곡.png"
+extraBody: |
+  <div id="toast" class="toast-notification">주소가 클립보드에 복사되었습니다.</div>
+extraScript: |
+  function showSection(id) {
+    const target = document.getElementById(id) ? id : "home";
+    document.querySelectorAll(".content").forEach(sec => {
+      sec.classList.remove("active");
+    });
+    document.getElementById(target).classList.add("active");
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      const href = link.getAttribute("href");
+      link.classList.toggle("is-active", href === "#" + target);
+    });
+  }
+
+  function handleRouting() {
+    const hash = location.hash.replace("#", "") || "home";
+    showSection(hash);
+  }
+
+  window.addEventListener("hashchange", handleRouting);
+  window.addEventListener("DOMContentLoaded", () => {
+    if (!location.hash) {
+      location.hash = "#home";
+    }
+    handleRouting();
+  });
+
+  function copyAddress() {
+    const tempInput = document.createElement("textarea");
+    tempInput.value = "부산광역시 연제구 과정로 139 2층 동빈한의원";
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    showToast();
+  }
+
+  function showToast() {
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+---
+<main>
+<section id="home" class="content active">
+<div class="hero">
+<div class="hero-copy">
+<p class="eyebrow">근골격계 질환 · 감기 · 소화 · 보약 집중 진료</p>
+<h1>원인을 찾아<br>근본을 치료합니다</h1>
+<p>
+각종 근골격계 질환부터 감기, 소화, 보약까지<br>
+부산 연제구 주치의 {{ site.name }}입니다
+</p>
+
+<div class="hero-actions">
+<a href="tel:{{ site.phone }}" class="btn primary">전화 상담</a>
+<a href="#treatment" class="btn secondary">진료과목 보기</a>
+</div>
+</div>
+
+<aside class="hero-panel" aria-label="{{ site.name }} 진료 안내">
+<span>부산 연산 토곡 수영 망미 센텀</span>
+<strong>{{ site.name }}</strong>
+<p>부산 허리디스크, 목디스크, 관절 통증 치료 한의원</p>
+<a href="tel:{{ site.phone }}" class="mini-call">예약 문의</a>
+</aside>
+</div>
+
+<section class="keyword-band">
+<p class="eyebrow">Core Treatment & Integrative Medicine</p>
+<h2>구조적 원인부터 체질 개선까지, 통합 한방 진료</h2>
+<p>척추·관절·근육의 근골격계 질환<br>
+  소화기·순환기 등의 내과 질환<br>
+  교통사고 보험 치료<br>
+  맞춤 보약, 전통 명품 처방까지</p>
+</section>
+
+<section class="proof-grid">
+<article>
+<strong>01</strong>
+<h3>원인 중심 상담</h3>
+<p>언제부터, 어떤 동작에서 아픈지 확인해 통증의 원인을 정확히 파악합니다.</p>
+</article>
+<article>
+<strong>02</strong>
+<h3>한방 복합 치료</h3>
+<p>침, 약침, 추나치료, 한약치료를 증상과 회복 단계에 맞춰 조합합니다.</p>
+</article>
+<article>
+<strong>03</strong>
+<h3>재발 방지 관리</h3>
+<p>증상 완화 이후에도 자세와 생활 습관을 함께 점검합니다.</p>
+</article>
+</section>
+</section>
+
+<section id="treatment" class="content">
+<div class="section-head">
+<p class="eyebrow">Treatment Programs</p>
+<h2>주요 진료과목</h2>
+<p>나에게 해당하는 증상을 찾아보고 내원하시면 편리합니다.</p>
+</div>
+
+<div class="treatment-grid">
+{%- for t in treatments | sort(attribute='order') %}
+<a href="{{ t.slug }}.html" class="service-card">
+<span class="service-number">{{ "0" if t.order < 10 else "" }}{{ t.order }}</span>
+<h3>{{ t.homeCard.title }}</h3>
+<p>{{ t.homeCard.desc }}</p>
+</a>
+{%- endfor %}
+</div>
+</section>
+
+<section id="clinic" class="content">
+<div class="section-head">
+<p class="eyebrow">Clinic Standard</p>
+<h2>편안한 진료 경험과 체계적인 치료 계획</h2>
+<p>{{ site.name }}은 몸 상태를 충분히 듣고, 필요한 치료를 이해하기 쉽게 설명합니다.</p>
+</div>
+
+<div class="feature-grid">
+<article class="feature-card">
+<img src="images/clinic1.jpg" alt="{{ site.name }} 내부 진료 공간">
+<div>
+<h3>차분한 진료 공간</h3>
+<p>깨끗하고 안정적인 환경에서 통증 부위와 움직임을 확인합니다.</p>
+</div>
+</article>
+
+<article class="feature-card">
+<img src="images/clinic2.jpeg" alt="{{ site.name }} 치료 장면">
+<div>
+<h3>개인별 치료 설계</h3>
+<p>증상, 회복 속도, 생활 패턴에 따라 침, 약침, 추나치료를 조합합니다.</p>
+</div>
+</article>
+
+<article class="feature-card">
+<img src="images/외부사진.JPG" alt="{{ site.name }} 외부 전경">
+<div>
+<h3>찾기 쉬운 위치</h3>
+<p>연산토곡 지역에서 허리, 목, 관절 통증 진료를 받으실 수 있습니다.</p>
+</div>
+</article>
+
+<article class="feature-card">
+<img src="images/when_recovery.png" alt="치료 기간 안내">
+<div>
+<h3>회복 단계별 안내</h3>
+<p>급성기, 아급성기, 만성기 상태에 맞춰 치료 빈도와 계획을 안내합니다.</p>
+</div>
+</article>
+</div>
+
+<section class="insurance-band">
+<div>
+<p class="eyebrow">Insurance Care</p>
+<h2>첩약 건강보험 적용 안내</h2>
+<p>기능성 소화불량, 허리디스크, 알레르기 비염, 월경통, 안면신경마비, 뇌혈관질환 후유증 등은 첩약 건강보험이 적용되어 저렴한 한약치료가 가능합니다.</p>
+</div>
+<a href="tel:{{ site.phone }}" class="btn primary">상담 문의</a>
+</section>
+</section>
+
+<section id="contact" class="content">
+<div class="section-head">
+<p class="eyebrow">Contact</p>
+<h2>오시는 길</h2>
+</div>
+
+<div class="contact-layout">
+<div class="contact-card">
+<dl>
+<div>
+<dt>전화번호</dt>
+<dd><a href="tel:{{ site.phone }}" class="contact-link">{{ site.phoneDisplay }}</a></dd>
+</div>
+<div>
+<dt>팩스</dt>
+<dd>{{ site.fax }}</dd>
+</div>
+<div>
+<dt>주소</dt>
+<dd>{{ site.addressShort }} 2층 <p>{{ site.name }}</p></dd>
+</div>
+<div>
+<dt>주차 및 진료안내</dt>
+<dd>지하주차장(무료 주차)</dd>
+</div>
+</dl>
+
+<div class="map-actions">
+  <a href="{{ site.naverMapUrl }}"
+     target="_blank" rel="noopener noreferrer" class="map-btn naver">
+     네이버 지도에서 보기
+  </a>
+
+  <a href="{{ site.kakaoMapUrl }}"
+     target="_blank" rel="noopener noreferrer" class="map-btn kakao">
+     카카오맵에서 보기
+  </a>
+
+  <button onclick="copyAddress()" class="map-btn copy">주소 복사하기</button>
+</div>
+</div>
+<div class="map-container">
+  <iframe
+    class="map-frame"
+    title="{{ site.name }} 지도"
+    src="{{ site.mapEmbedUrl }}"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    style="border:0;">
+  </iframe>
+</div>
+</div>
+</section>
+</main>

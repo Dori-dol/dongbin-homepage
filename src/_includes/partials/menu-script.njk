@@ -1,0 +1,30 @@
+function updateHeaderHeightVar() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+  const height = header.getBoundingClientRect().height;
+  document.documentElement.style.setProperty("--mobile-header-height", height + "px");
+}
+
+window.addEventListener("DOMContentLoaded", updateHeaderHeightVar);
+window.addEventListener("load", updateHeaderHeightVar);
+window.addEventListener("resize", updateHeaderHeightVar);
+
+function toggleMobileMenu() {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+  navLinks.classList.toggle("open");
+  toggleBtn.classList.toggle("active");
+  if (navLinks.classList.contains("open")) {
+    document.body.classList.add("no-scroll");
+  } else {
+    document.body.classList.remove("no-scroll");
+  }
+}
+
+function closeMobileMenu() {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+  navLinks.classList.remove("open");
+  toggleBtn.classList.remove("active");
+  document.body.classList.remove("no-scroll");
+}

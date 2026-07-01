@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ metaDescription }}">
+<link rel="canonical" href="{{ site.baseUrl }}/{{ pagePath }}">
+<meta property="og:type" content="{{ ogType | default('website') }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:url" content="{{ site.baseUrl }}/{{ pagePath }}">
+<meta property="og:image" content="{{ site.baseUrl }}/{{ ogImage | default(site.defaultOgImage) }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ pageTitle }}">
+<meta name="twitter:description" content="{{ metaDescription }}">
+<meta name="twitter:image" content="{{ site.baseUrl }}/{{ ogImage | default(site.defaultOgImage) }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+{%- if includeSchema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ site.name }}",
+  "telephone": "{{ site.phone }}",
+  "medicalSpecialty": {{ site.medicalSpecialty | dump | safe }}
+}
+</script>
+{%- endif %}
+</head>
+
+<body>
+{% include "partials/header.njk" %}
+
+{{ content | safe }}
+
+{% include "partials/footer.njk" %}
+
+{%- if extraBody %}
+{{ extraBody | safe }}
+{%- endif %}
+
+<script>
+{% include "partials/menu-script.njk" %}
+{%- if extraScript %}
+{{ extraScript | safe }}
+{%- endif %}
+</script>
+</body>
+</html>

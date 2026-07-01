@@ -1,0 +1,15 @@
+{
+  "name": "동빈한의원",
+  "phone": "051-752-0058",
+  "phoneDisplay": "051-752-0058",
+  "fax": "051-752-0059",
+  "address": "부산광역시 연제구 과정로 139 2층 동빈한의원",
+  "addressShort": "부산광역시 연제구 과정로 139",
+  "blogUrl": "https://blog.naver.com/trace_wind",
+  "naverMapUrl": "https://map.naver.com/v5/search/부산광역시%20연제구%20과정로%20139%20동빈한의원",
+  "kakaoMapUrl": "https://map.kakao.com/link/search/부산광역시 연제구 과정로 139 동빈한의원",
+  "mapEmbedUrl": "https://maps.google.com/maps?q=부산광역시%20연제구%20과정로%20139%20동빈한의원&t=&z=16&ie=UTF-8&iwloc=B&output=embed",
+  "baseUrl": "https://dongbin.co.kr",
+  "defaultOgImage": "images/dongbin_LOGO.svg",
+  "medicalSpecialty": ["척추질환", "관절질환", "통증클리닉", "한약치료", "교통사고"]
+}

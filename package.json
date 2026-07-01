@@ -1,0 +1,14 @@
+{
+  "name": "dongbin-homepage",
+  "version": "1.0.0",
+  "description": "동빈한의원 홈페이지 (Eleventy)",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,0 +1,13 @@
+---
+pagination:
+  data: treatments
+  size: 1
+  alias: treatment
+permalink: "{{ treatment.slug }}.html"
+layout: layouts/treatment.njk
+eleventyComputed:
+  pageTitle: "{{ treatment.pageTitle }}"
+  metaDescription: "{{ treatment.metaDescription }}"
+  ogImage: "{{ treatment.ogImage }}"
+  pagePath: "{{ treatment.slug }}.html"
+---

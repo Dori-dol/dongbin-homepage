@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+isTreatmentPage: true
+ogType: article
+---
+<main>
+<section class="detail-hero {{ treatment.heroClass }}">
+<p class="eyebrow">{{ treatment.eyebrow }}</p>
+<h1>{{ treatment.heroTitle }}</h1>
+<p>{{ treatment.heroDesc }}</p>
+</section>
+
+<section class="detail-layout">
+<article class="detail-main">
+{%- for card in treatment.cards %}
+<div class="card">
+<h2>{{ card.heading }}</h2>
+{{ card.html | safe }}
+</div>
+{%- endfor %}
+</article>
+
+<aside class="side-panel">
+<span>{{ treatment.sideLabel }}</span>
+<strong>{{ site.name }}</strong>
+<p>{{ treatment.sideDesc }}</p>
+<a href="tel:{{ site.phone }}" class="btn primary">진료 예약 문의</a>
+</aside>
+</section>
+
+<div class="related-card" style="margin-top: 22px;">
+<div>
+<h2>{{ treatment.relatedTitle }}</h2>
+<p>{{ treatment.relatedDesc }}</p>
+</div>
+<a href="index.html#treatment">진료과목 전체보기</a>
+</div>
+</main>

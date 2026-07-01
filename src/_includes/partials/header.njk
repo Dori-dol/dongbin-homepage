@@ -1,0 +1,34 @@
+{%- set indexPrefix = "index.html" if not onIndex else "" %}
+<header class="site-header">
+  <a class="brand" href="{{ '#home' if onIndex else 'index.html' }}" aria-label="{{ site.name }} 홈">
+    <img src="images/dongbin_LOGO.svg" alt="{{ site.name }}">
+  </a>
+
+  <nav class="nav-links" id="navLinks" aria-label="주요 메뉴">
+    <a href="{{ indexPrefix }}#home" onclick="closeMobileMenu()">홈</a>
+    <a href="{{ indexPrefix }}#clinic" onclick="closeMobileMenu()">한의원 소개</a>
+    <div class="nav-dropdown">
+      <a href="{{ indexPrefix }}#treatment" class="nav-dropdown-trigger{% if isTreatmentPage %} is-active{% endif %}">진료과목</a>
+      <ul class="nav-dropdown-menu">
+        {%- for t in treatments | sort(attribute='order') %}
+        <li><a href="{{ t.slug }}.html">{{ t.navLabel }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <a href="{{ indexPrefix }}#contact" onclick="closeMobileMenu()">오시는 길</a>
+  </nav>
+
+  <div class="header-right">
+    <a href="tel:{{ site.phone }}" class="header-phone-highlight desktop-only">전화번호: {{ site.phoneDisplay }}</a>
+    <a href="{{ site.blogUrl }}" target="_blank" rel="noopener noreferrer" class="blog-link-wrapper">
+      <span class="blog-label">블로그:</span>
+      <span class="blog-icon-sprite"></span>
+    </a>
+  </div>
+
+  <button class="menu-toggle" aria-label="메뉴 열기" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
