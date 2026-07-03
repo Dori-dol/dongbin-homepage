@@ -918,10 +918,12 @@ figcaption {
         display: flex;
         justify-content: center;
         margin-bottom: 12px;
+        position: relative;
+        z-index: 261;
     }
     .brand img {
         position: relative;
-        top: -8px;
+        top: 8;
         left: 0;
         width: 380px !important;
     }
@@ -933,6 +935,8 @@ figcaption {
     .header-right {
         margin: 0;
         order: 2;
+        position: relative;
+        z-index: 261;
     }
     .blog-label, .blog-divider {
         display: none;
@@ -952,7 +956,7 @@ figcaption {
         border: none;
         cursor: pointer;
         padding: 0;
-        z-index: 101;
+        z-index: 260;
         order: 3;
     }
     .menu-toggle span {
@@ -969,24 +973,31 @@ figcaption {
 
     .nav-links {
         display: none;
-        position: fixed;
-        top: var(--mobile-header-height, 70px);
+        position: absolute;
+        top: 0;
         left: 0;
         width: 100%;
-        height: calc(100vh - var(--mobile-header-height, 70px));
+        min-height: 100vh;
         background: #ffffff;
         flex-direction: column;
         gap: 0;
-        padding: 20px 0;
+        padding: calc(var(--mobile-header-height, 140px) + 16px) 0 20px;
         box-sizing: border-box;
-        z-index: 100;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior-y: bounce;
+        z-index: 250;        
     }
 
     .nav-links.open {
         display: flex;
+    }
+
+    body.no-scroll .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 260;
     }
 
     .nav-links a, 
@@ -1040,7 +1051,7 @@ figcaption {
         margin-bottom: 8px;
     }
     .brand img {
-        width: 380px !important;
+        width: 380px !important;        
     }
     .blog-icon-sprite {
         width: 34px;
@@ -1086,10 +1097,6 @@ figcaption {
         padding: 24px;
     }
     .treatment-grid { grid-template-columns: 1fr; }
-}
-
-body.no-scroll {
-    overflow: hidden !important;
 }
 
 @media (min-width: 901px) {

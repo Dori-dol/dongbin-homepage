@@ -13,12 +13,7 @@ function toggleMobileMenu() {
   const navLinks = document.getElementById("navLinks");
   const toggleBtn = document.querySelector(".menu-toggle");
   navLinks.classList.toggle("open");
-  toggleBtn.classList.toggle("active");
-  if (navLinks.classList.contains("open")) {
-    document.body.classList.add("no-scroll");    
-  } else {
-    document.body.classList.remove("no-scroll");
-  }
+  toggleBtn.classList.toggle("active");  
 }
 
 function closeMobileMenu() {
@@ -26,7 +21,6 @@ function closeMobileMenu() {
   const toggleBtn = document.querySelector(".menu-toggle");
   navLinks.classList.remove("open");
   toggleBtn.classList.remove("active");
-  document.body.classList.remove("no-scroll");
 }
 
 (function () {
