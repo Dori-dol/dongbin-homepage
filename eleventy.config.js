@@ -2,6 +2,7 @@ module.exports = function (eleventyConfig) {
   // 정적 자원은 그대로 복사 (이미지, 스타일시트, 사이트 인증/설정 파일)
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/style.css");
+  eleventyConfig.addPassthroughCopy("src/main.js");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy(

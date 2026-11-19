@@ -1,38 +1,65 @@
 ---
 layout: layouts/base.njk
-isTreatmentPage: true
-ogType: article
 ---
-<main>
-<section class="detail-hero {{ treatment.heroClass }}">
-<p class="eyebrow">{{ treatment.eyebrow }}</p>
-<h1>{{ treatment.heroTitle }}</h1>
-<p>{{ treatment.heroDesc }}</p>
-</section>
+<article class="detail">
+  <div class="wrap narrow">
+    <p class="crumb reveal"><a href="/#find">증상으로 찾기</a> ›
+      {%- for g in groups %}{% if g.id == treatment.group %} {{ g.title }}{% endif %}{% endfor %}</p>
+    {%- if treatment.insurance %}<p class="pill reveal">건강보험 첩약 적용 질환</p>{% endif %}
+    <h1 class="reveal">{{ treatment.heroTitle }}</h1>
+    <p class="lead reveal">{{ treatment.lead }}</p>
+    {%- if treatment.targets %}
+    <ul class="tgt reveal" aria-label="함께 진료하는 질환">
+      {%- for x in treatment.targets %}<li>{{ x }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
 
-<section class="detail-layout">
-<article class="detail-main">
-{%- for card in treatment.cards %}
-<div class="card">
-<h2>{{ card.heading }}</h2>
-{{ card.html | safe }}
-</div>
-{%- endfor %}
+    <h2 class="reveal">이런 증상이 있으신가요?</h2>
+    <ul class="check reveal">
+      {%- for s in treatment.symptoms %}
+      <li>{{ s }}</li>
+      {%- endfor %}
+    </ul>
+    <p class="hint reveal">하나라도 해당된다면, 한번 확인해 보세요.</p>
+
+    {%- if treatment.alert %}
+    <p class="alert reveal"><b>바로 도움이 필요한 경우</b><br>{{ treatment.alert }}</p>
+    {%- endif %}
+
+    <h2 class="reveal">동빈한의원에서는</h2>
+    <p class="reveal">{{ treatment.care }}</p>
+    {%- if treatment.note %}<p class="reveal">{{ treatment.note }}</p>{% endif %}
+  </div>
+
+  {%- if treatment.herbal %}
+  {%- set hb = treatment.herbal %}
+  <section class="hsec" id="herbal">
+    <div class="wrap">
+      <p class="eyebrow reveal">한약 치료</p>
+      <h2 class="reveal">{{ treatment.navLabel }}, 이렇게 치료합니다</h2>
+      {%- include "partials/herbal-viz.njk" %}
+      {%- if treatment.insurance %}
+      <p class="badge reveal">건강보험 첩약 적용 질환입니다. 요건에 해당하면 건강보험으로 한약 처방을 받으실 수 있으며, 대상 여부는 진료 시 안내해 드립니다.</p>
+      {%- endif %}
+      <p class="hmore reveal"><a href="/herbal.html">한약 치료 자세히 보기 →</a></p>
+    </div>
+  </section>
+  {%- endif %}
+
+  <div class="wrap narrow">
+    <div class="cta reveal">
+      <div><b>증상이 걱정되신다면 편하게 문의하세요</b><small>평일 9:30 – 19:00 (화·목 20:00) · 토 13:00까지 · 공휴일 휴무</small></div>
+      <div class="actions">
+        <a class="btn light" href="tel:{{ site.phone }}">전화 상담</a>
+        <a class="btn ghost light" href="{{ site.bookingUrl }}" target="_blank" rel="noopener noreferrer">네이버 예약</a>
+      </div>
+    </div>
+
+    <h2 class="reveal">다른 증상 보기</h2>
+    <div class="chips reveal">
+      {%- for t in treatments | sort(attribute='order') %}{% if t.slug != treatment.slug %}
+      <a href="/{{ t.slug }}.html">{{ t.navLabel }}</a>
+      {%- endif %}{% endfor %}
+    </div>
+  </div>
 </article>
-
-<aside class="side-panel">
-<span>{{ treatment.sideLabel }}</span>
-<strong>{{ site.name }}</strong>
-<p>{{ treatment.sideDesc }}</p>
-<a href="tel:{{ site.phone }}" class="btn primary">진료 예약 문의</a>
-</aside>
-</section>
-
-<div class="related-card" style="margin-top: 22px;">
-<div>
-<h2>{{ treatment.relatedTitle }}</h2>
-<p>{{ treatment.relatedDesc }}</p>
-</div>
-<a href="index.html#treatment">진료과목 전체보기</a>
-</div>
-</main>

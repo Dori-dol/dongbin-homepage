@@ -2,59 +2,57 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{ pageTitle }}</title>
 <meta name="description" content="{{ metaDescription }}">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="{{ site.baseUrl }}/{{ pagePath }}">
-<meta property="og:type" content="{{ ogType | default('website') }}">
+<meta property="og:type" content="website">
 <meta property="og:title" content="{{ pageTitle }}">
 <meta property="og:description" content="{{ metaDescription }}">
 <meta property="og:url" content="{{ site.baseUrl }}/{{ pagePath }}">
-<meta property="og:image" content="{{ site.baseUrl }}/{{ ogImage | default(site.defaultOgImage) }}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ pageTitle }}">
-<meta name="twitter:description" content="{{ metaDescription }}">
-<meta name="twitter:image" content="{{ site.baseUrl }}/{{ ogImage | default(site.defaultOgImage) }}">
+<meta property="og:image" content="{{ site.baseUrl }}/{{ site.defaultOgImage }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=1.0.1">
-{%- if includeSchema %}
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=3">
+<script>document.documentElement.className+=" js"</script>
+{%- if isHome %}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "{{ site.name }}",
-  "telephone": "{{ site.phone }}",
-  "medicalSpecialty": {{ site.medicalSpecialty | dump | safe }}
-}
+{"@context":"https://schema.org","@type":"MedicalClinic","name":"{{ site.name }}","telephone":"{{ site.phone }}","url":"{{ site.baseUrl }}","address":{"@type":"PostalAddress","addressCountry":"KR","addressRegion":"부산광역시","addressLocality":"연제구","streetAddress":"과정로 139 2층"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday","Friday"],"opens":"09:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Thursday"],"opens":"09:30","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:30","closes":"13:00"}]}
 </script>
 {%- endif %}
 </head>
-
 <body>
-{% include "partials/header.njk" %}
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="{{ site.name }} 홈"><img src="/images/dongbin_LOGO.svg" alt="{{ site.name }}" height="34"></a>
+    <nav aria-label="주요 메뉴">
+      <a href="/#find">증상으로 찾기</a>
+      <a href="/herbal.html">한약 치료</a>
+      <a href="/#visit" class="hide-m">진료시간 · 오시는 길</a>
+      <a href="tel:{{ site.phone }}" class="btn sm hide-m">전화 상담</a>
+    </nav>
+  </div>
+</header>
 
+<main>
 {{ content | safe }}
+</main>
 
-{% include "partials/footer.njk" %}
+<footer class="foot">
+  <div class="wrap">
+    <strong>{{ site.name }}</strong>
+    <p>{{ site.address }} · 전화 {{ site.phone }} · 팩스 {{ site.fax }}</p>
+    <p><a href="{{ site.blogUrl }}" target="_blank" rel="noopener noreferrer">네이버 블로그</a></p>
+    <p class="fine">치료 효과와 경과는 개인에 따라 다를 수 있으며, 정확한 진단과 치료 계획은 내원 상담 후 결정됩니다.</p>
+  </div>
+</footer>
 
-<button id="backToTop" class="back-to-top" aria-label="맨 위로 이동" type="button">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 19V5"/>
-    <path d="M5 12l7-7 7 7"/>
-  </svg>
-</button>
-
-{%- if extraBody %}
-{{ extraBody | safe }}
-{%- endif %}
-
-<script>
-{% include "partials/menu-script.njk" %}
-{%- if extraScript %}
-{{ extraScript | safe }}
-{%- endif %}
-</script>
+<div class="dock">
+  <a class="btn ghost" href="tel:{{ site.phone }}">전화 상담</a>
+  <a class="btn" href="{{ site.bookingUrl }}" target="_blank" rel="noopener noreferrer">네이버 예약</a>
+</div>
+<script src="/main.js?v=3" defer></script>
 </body>
 </html>

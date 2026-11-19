@@ -1,0 +1,20 @@
+<p class="hroot reveal">근본은 {{ hb.root }}.</p>
+<p class="hbl reveal">{{ hb.baseLine }}을 바탕으로, 몸 상태에 맞춰 약재를 더하고 덜어 드립니다.</p>
+<div class="hviz reveal" data-hviz>
+  <p class="hq">내 몸은 어디에 가까울까요?</p>
+  <div class="pats" role="group" aria-label="몸 상태별 가감">
+    {%- for p in hb.patterns %}
+    <button type="button" class="pat{% if loop.first %} on{% endif %}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
+      <i class="dot" aria-hidden="true"></i>
+      <b>{{ p.name }}</b><span>{{ p.desc }}</span><em>+ {{ p.add | join(" · ") }}</em>
+    </button>
+    {%- endfor %}
+  </div>
+  <div class="hmix" aria-live="polite">
+    <span class="k">기본방</span><span class="bs">{{ hb.base | join(" · ") }}</span><i class="pl">+</i>
+    <span class="ads">
+      {%- for p in hb.patterns %}<b class="addg{% if loop.first %} on{% endif %}">{{ p.add | join(" · ") }}</b>{% endfor %}
+    </span>
+  </div>
+  <p class="hfine">실제 처방은 진찰 후 개인별로 정해집니다.</p>
+</div>
